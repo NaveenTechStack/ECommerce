@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Models.ViewModels
 {
-    public class ShoppingCartVM
+    public class OrderVM
     {
-        public IEnumerable<ShoppingCart> ShoppingCarts { get; set; }     
         public OrderHeader OrderHeader { get; set; }
-        public string RazorOrderId { get; set; }
+
+        public IEnumerable<OrderDetail> OrderDetails { get; set; }
     }
 }
