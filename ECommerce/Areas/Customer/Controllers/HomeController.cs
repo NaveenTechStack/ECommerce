@@ -1,9 +1,11 @@
-using System.Diagnostics;
-using System.Security.Claims;
 using ECommerce.DataAccess.Repository.IRepository;
 using ECommerce.Models;
+using ECommerce.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Security.Claims;
 
 namespace ECommerce.Areas.Customer.Controllers
 {
@@ -23,6 +25,15 @@ namespace ECommerce.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity!;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            if(claim !=null)
+            {
+                HttpContext.Session.SetInt32(SD.SessionCart,
+                    _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).Count());
+            }
+
             IEnumerable<Product> products = _unitOfWork.Product.GetAll(includeProperties: "Category");
             return View(products);
         }
@@ -55,10 +66,15 @@ namespace ECommerce.Areas.Customer.Controllers
             {
                 cartFromDb.Count += cart.Count;
                 _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
             }
             else
             {
+                //add Cart Record
                 _unitOfWork.ShoppingCart.Add(cart);
+                _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart,
+                    _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
             }
             
             _unitOfWork.Save();
