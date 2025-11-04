@@ -33,6 +33,15 @@ namespace ECommerce.DataAccess.DBInitializer
         {
 
 
+            try
+            {
+                _db.Database.EnsureCreated(); // safe for InMemory and relational (no-op if exists)
+            }
+            catch (Exception ex)
+            {
+                // log if you have logging; swallow only if intentional
+            }
+
             //migrations if they are not applied
             try
             {

@@ -20,6 +20,8 @@ namespace ECommerce.DataAccess.Data
         public DbSet<OrderHeader> OrderHeaders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        public DbSet<ProductImage> ProductImages { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -87,8 +89,7 @@ namespace ECommerce.DataAccess.Data
                     Price = 90,
                     Price50 = 85,
                     Price100 = 80,
-                    CategoryId = 1,
-                    ImageUrl= "\\images\\product\\e8df3463-74ac-4df3-8b96-ffc6ffd70246.jpg"
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -101,8 +102,8 @@ namespace ECommerce.DataAccess.Data
                     Price = 30,
                     Price50 = 25,
                     Price100 = 20,
-                    CategoryId = 2,
-                    ImageUrl = "\\images\\product\\ca099d7e-7a04-4c4b-8e23-1fb2acc8a75a.jpg"
+                    CategoryId = 2
+                    //ImageUrl = "\\images\\product\\ca099d7e-7a04-4c4b-8e23-1fb2acc8a75a.jpg"
                 },
                 new Product
                 {
@@ -115,8 +116,8 @@ namespace ECommerce.DataAccess.Data
                     Price = 50,
                     Price50 = 40,
                     Price100 = 35,
-                    CategoryId = 3,
-                    ImageUrl = "\\images\\product\\9ee59d00-f839-46e4-b522-6594846b4094.jpg"
+                    CategoryId = 3
+                    //ImageUrl = "\\images\\product\\9ee59d00-f839-46e4-b522-6594846b4094.jpg"
                 },
                 new Product
                 {
@@ -129,8 +130,8 @@ namespace ECommerce.DataAccess.Data
                     Price = 65,
                     Price50 = 60,
                     Price100 = 55,
-                    CategoryId = 1,
-                    ImageUrl = "\\images\\product\\4a0d0803-6290-4c42-885b-e065baa05de2.jpg"
+                    CategoryId = 1
+                    //ImageUrl = "\\images\\product\\4a0d0803-6290-4c42-885b-e065baa05de2.jpg"
                 },
                 new Product
                 {
@@ -143,8 +144,8 @@ namespace ECommerce.DataAccess.Data
                     Price = 27,
                     Price50 = 25,
                     Price100 = 20,
-                    CategoryId = 2,
-                    ImageUrl = "\\images\\product\\8ca351b5-b750-4816-bfbc-c59dbfc784dd.jpg"
+                    CategoryId = 2
+                    //ImageUrl = "\\images\\product\\8ca351b5-b750-4816-bfbc-c59dbfc784dd.jpg"
                 },
                 new Product
                 {
@@ -157,8 +158,8 @@ namespace ECommerce.DataAccess.Data
                     Price = 23,
                     Price50 = 22,
                     Price100 = 20,
-                    CategoryId = 3,
-                    ImageUrl = "\\images\\product\\3307e311-5029-45a3-9542-2f907313fefe.jpg"
+                    CategoryId = 3
+                    //ImageUrl = "\\images\\product\\3307e311-5029-45a3-9542-2f907313fefe.jpg"
                 }
                 );
         }

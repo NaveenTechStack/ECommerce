@@ -8,14 +8,18 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseInMemoryDatabase("DemoDatabase"));
 
 builder.Services.Configure<RazorPaySettings>(builder.Configuration.GetSection("RazorPay"));
 
@@ -27,10 +31,20 @@ builder.Services.ConfigureApplicationCookie(options => {
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 
+var cultureInfo = new CultureInfo("en-IN");
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 builder.Services.AddAuthentication().AddFacebook(Options =>
 {
     Options.AppId = "1333871568317386";
     Options.AppSecret = "9bf63851464f8a5aa780ae61b24495df";
+});
+
+builder.Services.AddAuthentication().AddMicrosoftAccount(Options =>
+{
+    Options.ClientId = "d77f351e-84cc-439c-a7d6-90a90df72a81";
+    Options.ClientSecret = "Qhq8Q~RZnlLWOnQ7U9uA_4dzs6obVWSTnnw6KdpN";
 });
 
 

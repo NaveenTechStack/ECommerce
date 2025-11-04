@@ -34,7 +34,7 @@ namespace ECommerce.Areas.Customer.Controllers
                     _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).Count());
             }
 
-            IEnumerable<Product> products = _unitOfWork.Product.GetAll(includeProperties: "Category");
+            IEnumerable<Product> products = _unitOfWork.Product.GetAll(includeProperties: "Category,ProductImages");
             return View(products);
         }
 
@@ -43,7 +43,7 @@ namespace ECommerce.Areas.Customer.Controllers
             //Product product = _unitOfWork.Product.Get(u=>u.Id == productId, includeProperties: "Category");
             ShoppingCart cart = new()
             {
-                Product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category"),
+                Product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category,ProductImages"),
                 Count = 1,
                 ProductId = productId
             };

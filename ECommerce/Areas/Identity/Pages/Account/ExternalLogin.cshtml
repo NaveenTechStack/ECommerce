@@ -13,7 +13,7 @@
     Please enter an email address for this site below and click the Register button to finish
     logging in.
 </p>
-
+<div class="pb-5 mt-4 mb-4">
 <div class="row">
     <div class="col-md-4">
         <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
@@ -57,7 +57,7 @@
         </form>
     </div>
 </div>
-
+</div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

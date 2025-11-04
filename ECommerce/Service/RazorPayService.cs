@@ -25,7 +25,7 @@ namespace ECommerce.Service
             string transcationID = _random.Next(0, 1000).ToString();
 
             Dictionary<string, object> input = new Dictionary<string, object>();
-            input.Add("amount", amount);
+            input.Add("amount", (long)(amount * 100));
             input.Add("currency", "INR");
             input.Add("receipt", transcationID);
             Razorpay.Api.Order order = client.Order.Create(input);
