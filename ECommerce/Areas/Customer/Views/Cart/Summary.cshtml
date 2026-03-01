@@ -200,3 +200,121 @@
 
 }
 
+<style>
+	/* Overlay with blur background */
+	.rzp-overlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.25);
+		backdrop-filter: blur(6px);
+		z-index: 9999;
+		align-items: center;
+		justify-content: center;
+		animation: fadeIn 0.3s ease-out;
+	}
+
+	/* Center modal */
+	.rzp-modal {
+		background: #fff;
+		border-radius: 14px;
+		width: 360px;
+		max-width: 90%;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+		padding: 22px 24px;
+		text-align: center;
+		transform: scale(0.95);
+		opacity: 0;
+		animation: scaleIn 0.3s ease-out forwards;
+		font-family: "Segoe UI", Roboto, sans-serif;
+	}
+
+	/* Header */
+	.rzp-modal-header h3 {
+		margin: 0;
+		color: #222;
+		font-size: 1.2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.rzp-modal-header i {
+		color: #3399cc;
+	}
+
+	/* Body */
+	.rzp-modal-body {
+		margin: 16px 0;
+		color: #444;
+		font-size: 0.95rem;
+	}
+
+	/* Footer buttons */
+	.rzp-modal-footer {
+		display: flex;
+		justify-content: center;
+		gap: 12px;
+	}
+
+	.rzp-btn {
+		padding: 8px 20px;
+		border: none;
+		border-radius: 6px;
+		cursor: pointer;
+		font-size: 0.95rem;
+		transition: all 0.25s ease;
+	}
+
+	.rzp-pay {
+		background: linear-gradient(90deg, #3399cc, #287db3);
+		color: white;
+		font-weight: 500;
+	}
+
+		.rzp-pay:hover {
+			background: linear-gradient(90deg, #2b86c5, #236b9a);
+		}
+
+	.rzp-cancel {
+		background: #f3f3f3;
+		color: #444;
+	}
+
+		.rzp-cancel:hover {
+			background: #e8e8e8;
+		}
+
+	/* Animations */
+	@keyframes fadeIn {
+		from
+
+	{
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+
+	}
+
+	@keyframes scaleIn {
+		from
+
+	{
+		opacity: 0;
+		transform: scale(0.95);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	}
+</style>
