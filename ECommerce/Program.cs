@@ -19,13 +19,13 @@ builder.Services.AddControllersWithViews();
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseInMemoryDatabase("DemoDatabase"));
-
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseInMemoryDatabase("DemoDatabase"));
+
+//var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseNpgsql(connectionString));
 
 builder.Services.Configure<RazorPaySettings>(builder.Configuration.GetSection("RazorPay"));
 
