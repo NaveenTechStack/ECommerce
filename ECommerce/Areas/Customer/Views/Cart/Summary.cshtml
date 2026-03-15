@@ -183,7 +183,8 @@
 		// Show modal if Razorpay order exists
 		@if (@Model.RazorOrderId != null)
 		{
-				<text>
+			
+			<text>
 						document.getElementById('rzpModalOverlay').style.display = 'flex';
 							document.getElementById('widgetAmount').innerText = '@Model.OrderHeader.OrderTotal';
 
@@ -194,7 +195,15 @@
 						document.getElementById('closeWidgetBtn').onclick = function() {
 							document.getElementById('rzpModalOverlay').style.display = 'none'
 						};
-				</text>
+			</text>
+		}
+		else
+		{			
+							
+			<text>
+				document.getElementById('rzpModalOverlay').style.display = 'none';
+			</text>
+							
 		}
 	</script>
 
@@ -289,6 +298,32 @@
 			background: #e8e8e8;
 		}
 
+	/* Animations */
+	@@keyframes fadeIn {
+		from
 
-	
+	{
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+
+	}
+
+	@@keyframes scaleIn {
+		from
+
+	{
+		opacity: 0;
+		transform: scale(0.95);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	}
 </style>
